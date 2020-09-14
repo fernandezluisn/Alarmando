@@ -1,6 +1,4 @@
-package io.ionic.starter;
-
-import android.os.Bundle;
+package com.fernandez.alarmando;
 
 import com.getcapacitor.BridgeActivity;
 import com.getcapacitor.Plugin;
@@ -18,4 +16,3 @@ public class MainActivity extends BridgeActivity {
       // Ex: add(TotallyAwesomePlugin.class);
     }});
   }
-}

@@ -24,3 +24,71 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+:root {
+    /* Set the background of the entire app */
+    --ion-background-color:black;
+  
+    /* Set the font family of the entire app */
+    --ion-font-family:bold, "roboto";
+
+    --ion-text-color: white;
+
+   
+  }
+
+  ion-img{
+    margin-top: 10%;
+    height: 40%;
+  }
+
+  ion-button {
+    --color: rgb(247, 244, 244);
+    --border:solid black 2rem;
+    --border-radius: 50rem;
+    --background-color:white;   
+    margin-left: 15%;
+    margin-top: 1rem; 
+  }
+
+  select{
+    margin-top: 2rem;
+    width: 40rem;
+    margin-left: 15%;
+    border: 0.1rem solid red;
+    color: black;
+    height: 3rem;
+    font-size: large;
+    
+    
+  }
+
+  .abajo{    
+      position:absolute;
+      bottom:1rem;       
+  }
+  
+
+  ion-item{
+      margin-top: 2rem;
+      width: 70%;
+      margin-left: 15%;
+      border: 0.1rem solid red;
+      --ion-background-color: white;
+      --ion-text-color: black;
+  }
+
+  .alert-message.sc-ion-alert-md{
+    color: black;
+  }
+
+  .alert-button.sc-ion-alert-md{
+      color: red;
+  }
+
+  .danger-alert-btn {    
+    --ion-text-color: black;
+    --ion-border: 1rem black solid;
+    --ion-background-color: rgb(135, 162, 192);
+    --ion-font-family:bold, "roboto";   
+}

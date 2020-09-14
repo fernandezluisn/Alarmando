@@ -12,10 +12,15 @@ export class LoginPage implements OnInit {
 
   email:string;
   password:string;
+
+  opcion:string;
+  opciones=["Invitado", "Tester", "Admin", "Usuario", "Crear nuevo usuario"];
   
   constructor(private servicio:AuthServiceService, private router:Router, public alertController: AlertController ) { 
     this.email="";
     this.password="";
+
+    this.opcion="Crear nuevo usuario";
   }
 
   ngOnInit() {
@@ -25,7 +30,7 @@ export class LoginPage implements OnInit {
     const alert= this.alertController.create({
       cssClass: 'danger-alert-btn',
       header: 'Error',
-      subHeader: 'Subtitle',
+      subHeader: 'Datos mal ingresados',
       message: mensaje,
       buttons: ['OK']
     });
@@ -34,19 +39,43 @@ export class LoginPage implements OnInit {
   }
 
   login(){
-    this.servicio.loginUser(this.email, this.password).then(res=>{
-      this.router.navigate(['home']);
-    }).catch(error=>{
-      this.alertar(error.message);      
-    });
+    if(this.password.length>5){
+      this.servicio.loginUser(this.email, this.password).then(res=>{
+        this.router.navigate(['home']);
+      }).catch(error=>{
+        this.alertar(error.message);      
+      });
+    }else{
+      this.alertar("El password debe tener al menos 6 caracteres."); 
+    }
+    
   }
 
-  registrar(){
-    this.servicio.registrarUsuario(this.email, this.password).then(res=>{
-      this.router.navigate(['home']);
-    }).catch(error=>{
-      this.alertar(error.message);     
-    });
+  
+
+  carg2(){
+    switch(this.opcion){
+      case "Invitado":
+        this.email="invitado@invitado.com";
+        this.password="222222";
+        break;
+      case "Crear nuevo usuario":
+        this.email="";
+        this.password="";
+        break;
+      case "Usuario":
+        this.email="usuario@usuario.com";
+        this.password="333333";
+        break;
+      case "Admin":
+        this.email="admin@admin.com";
+        this.password="111111";
+        break;
+      case "Tester":
+        this.email="tester@tester.com";
+        this.password="555555";
+        break;
+    }
   }
 
 }

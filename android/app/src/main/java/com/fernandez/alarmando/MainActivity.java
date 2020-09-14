@@ -1,5 +1,7 @@
 package com.fernandez.alarmando;
 
+import android.os.Bundle;
+
 import com.getcapacitor.BridgeActivity;
 import com.getcapacitor.Plugin;
 
@@ -16,3 +18,4 @@ public class MainActivity extends BridgeActivity {
       // Ex: add(TotallyAwesomePlugin.class);
     }});
   }
+}

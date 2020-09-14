@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>login</ion-title>
+    <ion-title>Ingresar</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -19,8 +19,18 @@
     <ion-input type="password" [(ngModel)]="password"></ion-input>
   </ion-item>
 
-  <ion-item-divider>
-    <ion-button size="large" (click)="registrar()">Registrar</ion-button>
-    <ion-button size="large" (click)="login()">Login</ion-button>
+  
+  
+  
+  <select [(ngModel)]="opcion" class="form-control" style="width: 12rem;" (change)="carg2()">
+    <option [value]="item" *ngFor="let item of opciones">{{item}}</option>
+  </select>     
+  
+
+  <ion-item-divider class="abajo">   
+    <ion-button color="danger" size="large" (click)="login()">Entrar</ion-button>
   </ion-item-divider>
+
+  <ion-img src="../assets/alarma.png"></ion-img>
+
 </ion-content>

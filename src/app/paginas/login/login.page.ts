@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AuthServiceService} from '../../servicios/auth-service.service';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -13,10 +14,12 @@ export class LoginPage implements OnInit {
   email:string;
   password:string;
 
+  loading: any;
   opcion:string;
   opciones=["Invitado", "Tester", "Admin", "Usuario", "Crear nuevo usuario"];
   
-  constructor(private servicio:AuthServiceService, private router:Router, public alertController: AlertController ) { 
+  constructor(private servicio:AuthServiceService, private router:Router, public alertController: AlertController, 
+    private loadingCtrl: LoadingController ) { 
     this.email="";
     this.password="";
 
@@ -25,6 +28,17 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {
   }
+
+  async presentLoading(message: string) {
+    this.loading = await this.loadingCtrl.create({
+        message,
+        spinner: "crescent",
+        duration: 2500
+    });
+    return this.loading.present();
+
+    
+}
 
   async alertar(mensaje:string){
     const alert= this.alertController.create({
@@ -40,6 +54,7 @@ export class LoginPage implements OnInit {
 
   login(){
     if(this.password.length>5){
+      this.presentLoading('Aguarde...');
       this.servicio.loginUser(this.email, this.password).then(res=>{
         this.router.navigate(['home']);
       }).catch(error=>{

@@ -1,19 +1,18 @@
+
+
+<ion-content [fullscreen]="true" >
   
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+  
+    
+  
+  
+<div id="pepe">
+  <h3>Aquí puede prender y apagar la alarma</h3>
+  <h3>{{a}}</h3>
+  <ion-img src="../assets/alarma.png" (click)="activar()"></ion-img>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  Holass
+  <ion-button class="abajo" color="danger" (click)="salir()">Cerrar sesión</ion-button>
+</div> 
+  
 
 </ion-content>

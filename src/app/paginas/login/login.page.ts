@@ -11,6 +11,7 @@ import { LoadingController } from '@ionic/angular';
 })
 export class LoginPage implements OnInit {
 
+  
   email:string;
   password:string;
 
@@ -27,7 +28,7 @@ export class LoginPage implements OnInit {
   }
 
   ngOnInit() {
-  }
+  }  
 
   async presentLoading(message: string) {
     this.loading = await this.loadingCtrl.create({
@@ -58,7 +59,7 @@ export class LoginPage implements OnInit {
       this.servicio.loginUser(this.email, this.password).then(res=>{
         this.router.navigate(['home']);
       }).catch(error=>{
-        this.alertar(error.message);      
+        this.alertar("Los datos ingresados no son correctos.");      
       });
     }else{
       this.alertar("El password debe tener al menos 6 caracteres."); 

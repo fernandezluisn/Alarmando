@@ -6,13 +6,25 @@
     
   
   
-<div id="pepe">
-  <h3>Aquí puede prender y apagar la alarma</h3>
-  <h3>{{a}}</h3>
-  <ion-img src="../assets/alarma.png" (click)="activar()"></ion-img>
+<div id="pepe" >
+  <h3 [hidden]="!ishidden">Aquí puede prender y apagar la alarma</h3>
+  
+  <ion-img [hidden]="!ishidden" src="../assets/alarma.png" (click)="activar()"></ion-img>
 
-  <ion-button class="abajo" color="danger" (click)="salir()">Cerrar sesión</ion-button>
+  <div id="Contraseña" [hidden]="ishidden" style="position: static; margin-top: 40%; margin-left: 10%; margin-bottom: 1rem; width: 80%;">
+    <h3>Ingrese su contraseña para apagar la alarma</h3>  
+    <ion-item>
+      
+      <ion-input type="password" [(ngModel)]="password" style="margin-bottom: 1rem;"></ion-input>
+      
+    </ion-item>
+    <ion-button class="abajo" color="danger" (click)="apagarAlarma()">Ingresar password</ion-button>
+  </div> 
+
+  <ion-button [hidden]="!ishidden" class="abajo" color="danger" (click)="salir()">Cerrar sesión</ion-button>
 </div> 
+
+
   
 
 </ion-content>

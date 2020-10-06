@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { NativeAudio } from '@ionic-native/native-audio/ngx';
 import { Vibration } from '@ionic-native/vibration/ngx';
+import { Flashlight } from '@ionic-native/flashlight/ngx';
 
 import {AngularFireModule} from '@angular/fire'; 
 import {environment} from '../environments/environment';
@@ -26,6 +27,7 @@ import {AuthServiceService} from '../app/servicios/auth-service.service';
     AppRoutingModule],
   providers: [
     NativeAudio,
+    Flashlight,
     Vibration,
     StatusBar,
     AngularFireAuth,

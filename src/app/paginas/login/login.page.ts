@@ -3,6 +3,7 @@ import {AuthServiceService} from '../../servicios/auth-service.service';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { LoadingController } from '@ionic/angular';
+import { Vibration } from '@ionic-native/vibration/ngx';
 
 @Component({
   selector: 'app-login',
@@ -15,19 +16,24 @@ export class LoginPage implements OnInit {
   email:string;
   password:string;
 
+  ishidden=true;
+
   loading: any;
   opcion:string;
   opciones=["Invitado", "Tester", "Admin", "Usuario", "Crear nuevo usuario"];
+
+  private vietnam= new Audio("../assets/audio/good-morning-v2.mp3");
   
   constructor(private servicio:AuthServiceService, private router:Router, public alertController: AlertController, 
-    private loadingCtrl: LoadingController ) { 
+    private loadingCtrl: LoadingController, private vibra:Vibration ) { 
     this.email="";
     this.password="";
-
+      
     this.opcion="Crear nuevo usuario";
   }
 
   ngOnInit() {
+    
   }  
 
   async presentLoading(message: string) {
@@ -57,11 +63,14 @@ export class LoginPage implements OnInit {
     if(this.password.length>5){
       this.presentLoading('Aguarde...');
       this.servicio.loginUser(this.email, this.password).then(res=>{
+        
         this.router.navigate(['home']);
       }).catch(error=>{
+        this.vibra.vibrate(600);
         this.alertar("Los datos ingresados no son correctos.");      
       });
     }else{
+      this.vibra.vibrate(600);
       this.alertar("El password debe tener al menos 6 caracteres."); 
     }
     
